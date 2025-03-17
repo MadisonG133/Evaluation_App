@@ -1,0 +1,27 @@
+body {
+    background-color: #23486A;
+}
+
+h1 {
+    color: #EFB036;
+}
+
+h3 {
+    color: #3B6790;
+}
+
+#btnLogin {
+   background-color: #3B6790 ; 
+}
+
+#btnRegistration {
+    background-color: #3B6790 ; 
+ }
+
+#frmLogin {
+    background-color: #F5F5F7;
+}
+
+#frmRegister {
+    background-color: #F5F5F7;
+}
