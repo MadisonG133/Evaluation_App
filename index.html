@@ -5,41 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Review</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- A link to bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- A link to styles.css -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-dark">
+<body>
     <!--I tried to keep it similar to the forms we did in class with sizing.-->
-    <form class="card col-12 col-md-8 offset-md-4 col-lg-6 offset-lg-3 mt-5 mb-5" id="frmRegister">
+    <!-- Login Form -->
+    <form class="card col-12 col-md-8 offset-md-4 col-lg-6 offset-lg-3 mt-5 mb-5" id="frmLogin">
         <div class="card-body">
-            <h1 class="text-center mb-0 text-primary">Group Review</h1>
+            <h1 class="text-center mb-0">Group Review</h1>
+            <h3 class="text-center mb-3">User Login</h3>
+            <h5>Sign In</h5>
+            <input id="txtEmailLogin" class="form-control" type="email" placeholder="Email" aria-label="Input for Email">
+            <!-- I put the Password Fied in a div, so I could add a toggle view button to it. You'll notice the same thing with the Register Password Fields -->
+            <div class ="position-relative">
+                <input id="txtPasswordLogin" class="form-control mt-2 mb-3" type="password" placeholder="Password" aria-label="Input for Password">
+                <button class="btn position-absolute end-0 top-50 translate-middle-y " type="button" id="togglePasswordLogin">
+                    <i class="bi bi-eye"></i>
+                </button>
+            </div>
+            <button class="btn btn-primary col-12 mt-2" type="button" id="btnLogin">Login</button>
+            <button class="btn btn-link col-12 mt-0" type="button" id="btnSwapRegistration">Don't have an account? Create one here.</button>
+        </div>
+
+    </form>
+
+    <!-- Registration Form -->     
+    <form class="card col-12 col-md-8 offset-md-4 col-lg-6 offset-lg-3 mt-5 mb-5" id="frmRegister" style="display:none;">
+        <div class="card-body">
+            <h1 class="text-center mb-0">Group Review</h1>
             <h3 class="text-center mb-3">User Registration</h3>
             <h5>Personal Information</h5>
             <input id="txtFirstName" class="form-control" type="text" placeholder="First Name" aria-label="Input for First name">
             <input id="txtLastName" class="form-control mt-2 mb-3" type="text" placeholder="Last Name" aria-label="Input for Last name">
             <h5>Account Information</h5>
             <input id="txtEmail" class="form-control" type="email" placeholder="Email" aria-label="Input for Email">
-            <input id="txtPassword" class="form-control mt-2 mb-3" type="password" placeholder="Password" aria-label="Input for Password">
-            <input id="txtConfirmPassword" class="form-control mt-2 mb-3" type="password" placeholder="Confirm password" aria-label="Input for Confirming Password">
+
+            <!-- I put the Password Fied in a div, so I could add a toggle view button to it. -->
+            <div class="position-relative">
+                <input id="txtPassword" class="form-control mt-2 mb-3" type="password" placeholder="Password" aria-label="Input for Password">
+                <button class="btn position-absolute end-0 top-50 translate-middle-y" type="button" id="togglePassword">
+                    <i class="bi bi-eye"></i>
+                </button>
+            </div>
+            <!-- I put the Password Fied in a div, so I could add a toggle view button to it. -->
+            <div class="position-relative">
+                <input id="txtConfirmPassword" class="form-control mt-2 mb-3" type="password" placeholder="Confirm password" aria-label="Input for Confirming Password">
+                <button class="btn position-absolute end-0 top-50 translate-middle-y" type="button" id="toggleConfirmPassword">
+                    <i class="bi bi-eye"></i>
+                </button>
+            </div>
+
             <button class="btn btn-primary col-12 mt-2" type="button" id="btnRegistration">Register</button>
             <button class="btn btn-link col-12 mt-0" type="button" id="btnSwapLogin">Already have an account? Login here.</button>
         </div>
 
     </form>
-    <form class="card col-12 col-md-8 offset-md-4 col-lg-6 offset-lg-3 mt-5 mb-5" id="frmLogin" style="display:none;">
-        <div class="card-body">
-            <h1 class="text-center mb-0 text-primary">Group Review</h1>
-            <h3 class="text-center mb-3">User Login</h3>
-            <h5>Sign In</h5>
-            <input id="txtEmailLogin" class="form-control" type="email" placeholder="Email" aria-label="Input for Email">
-            <input id="txtPasswordLogin" class="form-control mt-2 mb-3" type="password" placeholder="Password" aria-label="Input for Password">
-            <button class="btn btn-primary col-12 mt-2" type="button" id="btnLogin">Login</button>
-            <button class="btn btn-link col-12 mt-0" type="button" id="btnSwapRegistration">Don't have an account? Create one here.</button>
-        </div>
-
-    </form>
+    
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.all.min.js"></script>
     <script>
+
+
+        document.querySelector("#btnLogin").addEventListener("click",(e) => {
+            const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+
+            let strEmailLogin = document.querySelector('#txtEmailLogin').value
+            let strPasswordLogin = document.querySelector('#txtPasswordLogin').value
+            strEmailLogin = strEmailLogin.toLowerCase()
+            let blnError = false
+            let strMessage = ""
+
+            if(!regEmail.test(strEmailLogin)){
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">Please Enter a Valid Email Address</p>'
+            }
+
+            if(strPasswordLogin.length < 1){ //Keeping password check as just needs to be entered.
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">Password Cannot Be Blank</p>'
+            }
+
+            if(blnError){
+                Swal.fire({
+                title: "Oh no, you have an error!",
+                html: strMessage,
+                icon: "error"
+                });
+            }
+            else{
+                Swal.fire({
+                title: "Successful Login",
+                icon: "success"
+                });
+            }
+
+        })
+
+
         //Below is input validation for registration
         document.querySelector("#btnRegistration").addEventListener("click",(e) => {
             //Validation for Personal Information
@@ -78,8 +144,6 @@
                 blnError = true
                 strMessage += '<p class="mb-0 mt-0">Passwords Must be the Same</p>'
             }
-
-
             if(blnError){
                 Swal.fire({
                 title: "Oh no, you have an error!",
@@ -96,50 +160,45 @@
             
         })
 
-        document.querySelector("#btnLogin").addEventListener("click",(e) => {
-            const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+        // This allows for the Password toggle view functionality
+        document.getElementById('togglePasswordLogin').addEventListener('click', function() {
+            togglePasswordVisibility('txtPasswordLogin', this);
+        });
 
-            let strEmailLogin = document.querySelector('#txtEmailLogin').value
-            let strPasswordLogin = document.querySelector('#txtPasswordLogin').value
-            strEmailLogin = strEmailLogin.toLowerCase()
-            let blnError = false
-            let strMessage = ""
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            togglePasswordVisibility('txtPassword', this);
+        });
 
-            if(!regEmail.test(strEmailLogin)){
-                blnError = true
-                strMessage += '<p class="mb-0 mt-0">Please Enter a Valid Email Address</p>'
+        document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+            togglePasswordVisibility('txtConfirmPassword', this);
+        });
+
+        function togglePasswordVisibility(inputId, button) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = button.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
             }
+        }
 
-            if(strPasswordLogin.length < 1){ //Keeping password check as just needs to be entered.
-                blnError = true
-                strMessage += '<p class="mb-0 mt-0">Password Cannot Be Blank</p>'
-            }
 
-            if(blnError){
-                Swal.fire({
-                title: "Oh no, you have an error!",
-                html: strMessage,
-                icon: "error"
-                });
-            }
-            else{
-                Swal.fire({
-                title: "Successful Login",
-                icon: "success"
-                });
-            }
-
+        //This allows for the swap between the Login and Registration form
+        $('#btnSwapRegistration').on('click', function(){
+            $('#frmLogin').slideUp(function(){
+                $('#frmRegister').slideDown()
+            })
         })
 
         $('#btnSwapLogin').on('click', function(){
             $('#frmRegister').slideUp(function(){
                 $('#frmLogin').slideDown()
-            })
-        })
-
-        $('#btnSwapRegistration').on('click', function(){
-            $('#frmLogin').slideUp(function(){
-                $('#frmRegister').slideDown()
             })
         })
     </script>
