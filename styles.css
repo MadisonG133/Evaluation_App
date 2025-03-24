@@ -14,9 +14,22 @@ h3 {
    background-color: #3B6790 ; 
 }
 
+/* Made it to when you hover over the login in button it gives a shadow effect */
+#btnLogin:hover {
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+    transition: box-shadow 0.2s ease; 
+ }
+
 #btnRegistration {
     background-color: #3B6790 ; 
- }
+}
+
+/* Same thing here, made it to when you hover over the register button it gives a shadow effect */
+ #btnRegistration:hover {
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+    transition: box-shadow 0.2s ease; 
+}
+
 
 #frmLogin {
     background-color: #F5F5F7;
