@@ -38,3 +38,26 @@ h3 {
 #frmRegister {
     background-color: #F5F5F7;
 }
+
+.sidebar {
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #EFB036;
+    color: white;
+    padding-top: 20px;
+    padding-left: 10px;
+    }
+    
+    .sidebar a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+    }
+    
+    .sidebar a:hover {
+    background-color: #3B6790;
+    }
