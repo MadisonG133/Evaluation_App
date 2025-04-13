@@ -28,6 +28,60 @@
             "course_id": "c1",
             "student_id": "u1"
         }
-    ]
-    
+    ],
+    "teams": [
+        {
+            "id": "t1",
+            "course_id": "c1",
+            "name": "Testers"
+        }
+    ],
+    "team_members": [
+        {
+            "team_id": "t1",
+            "student_id": "u1"
+        }
+    ],
+    "reviews": [
+    {
+      "id": "r1",
+      "course_id": "c1",
+      "title": "Placeholder Test Review",
+      "is_public": true,
+      "scheduled_at": "2025-04-15T08:00:00Z",
+      "due_at": "2025-04-20T23:59:59Z"
+    }
+    ],
+    "review_questions": [
+        {
+        "id": "q1",
+        "review_id": "r1",
+        "question": "How does the program look so far?",
+        "type": "short"
+        },
+        {
+          "id": "q2",
+          "review_id": "r1",
+          "question": "What can be improved.",
+          "type": "short"
+        }
+    ],
+    "review_responses": [
+        {
+        "review_id": "r1",
+        "reviewer_id": "u2",
+        "reviewee_id": "u1",
+        "question_id": "q1",
+        "response": "It looks decent considering everything is a placeholder.",
+        "public": true
+        },
+        {
+        "review_id": "r1",
+        "reviewer_id": "u2",
+        "reviewee_id": "u1",
+        "question_id": "q2",
+        "response": "Could use more backend stuff.",
+        "public": false
+        }
+    ]  
 }
