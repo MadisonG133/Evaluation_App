@@ -1,0 +1,33 @@
+{
+    "users": [
+        {
+            "id": "u1", 
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "jdoe42@tntech.edu",
+            "role": "student"
+        },
+        {
+            "id": "u2", 
+            "first_name": "Jane",
+            "last_name": "Doe",
+            "email": "jdoe40@tntech.edu",
+            "role": "instructor"
+        }
+    ],
+    "courses": [
+        {
+            "id": "c1",
+            "name": "CSC3100",
+            "instructor_id": "u2",
+            "join_code": "CSC3100-0001"
+        }
+    ],
+    "enrolled": [
+        {
+            "course_id": "c1",
+            "student_id": "u1"
+        }
+    ]
+    
+}
