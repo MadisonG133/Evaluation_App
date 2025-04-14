@@ -55,14 +55,38 @@
         }
     ],
     "reviews": [
-    {
-      "id": "r1",
-      "course_id": "c1",
-      "title": "Placeholder Test Review",
-      "is_public": true,
-      "scheduled_at": "2025-04-15T08:00:00Z",
-      "due_at": "2025-04-20T23:59:59Z"
-    }
+        {
+        "id": "r1",
+        "course_id": "c1",
+        "title": "Placeholder Test Review",
+        "is_public": true,
+        "scheduled_at": "2025-04-15T08:00:00Z",
+        "due_at": "2025-04-20T23:59:59Z"
+        },
+        {
+        "id": "r2",
+        "course_id": "c1",
+        "title": "Test Review 1",
+        "is_public": true,
+        "scheduled_at": "2025-04-15T08:00:00Z",
+        "due_at": "2025-04-20T23:59:59Z"
+        },
+        {
+        "id": "r3",
+        "course_id": "c1",
+        "title": "Test Review 2",
+        "is_public": false,
+        "scheduled_at": "2025-04-15T08:00:00Z",
+        "due_at": "2025-04-20T23:59:59Z"
+        },
+        {
+        "id": "r4",
+        "course_id": "c2",
+        "title": "Introduction to this second course.",
+        "is_public": true,
+        "scheduled_at": "2025-04-15T08:00:00Z",
+        "due_at": "2025-04-20T23:59:59Z"
+        }
     ],
     "review_questions": [
         {
