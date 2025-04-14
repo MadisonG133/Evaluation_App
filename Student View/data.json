@@ -20,6 +20,11 @@
             "name": "Discord",
             "user_id": "u1",
             "username": "jdoe1234"
+        },
+        {
+            "name": "Teams",
+            "user_id": "u1",
+            "username": "jdoe42@tntech.edu"
         }
     ],
     "courses": [

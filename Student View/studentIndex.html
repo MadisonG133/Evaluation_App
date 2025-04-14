@@ -25,8 +25,14 @@
     <form class="card col-12 col-md-8 offset-md-4 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardAccount">
         <div class="card-body">
             <h1 class="text-center mb-0">Peer Assessment</h1>
-            <h3 class="text-center mb-3">John Doe</h3>
-            <h5>This is the page for the user account.</h5>
+            <h3 id="accountName" class="text-center mb-3"></h3>
+            <h3>Contacts</h3>
+            <ul id="contactList" class="list-group"></ul>
+            <h5 class="mt-5">Below is a mockup to show future features and does nothing right now.</h5>
+            <h3 class="mt-2">Enter New Contact Information Below.</h3>
+            <input id="txtcontactName" class="form-control" type="text" placeholder="Name of Contact" aria-label="Input for Name of Contact">
+            <input id="txtUserame" class="form-control" type="text" placeholder="Username for Contact" aria-label="Input for Username">
+            <button class="btn btn-primary col-12 mt-2" type="button" id="btnSubmit">Add Contact</button>
         </div>
     </form>
 
