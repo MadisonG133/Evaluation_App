@@ -15,6 +15,13 @@
             "role": "instructor"
         }
     ],
+    "contact_info": [
+        {
+            "name": "Discord",
+            "user_id": "u1",
+            "username": "jdoe1234"
+        }
+    ],
     "courses": [
         {
             "id": "c1",
