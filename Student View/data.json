@@ -83,5 +83,11 @@
         "response": "Could use more backend stuff.",
         "public": false
         }
-    ]  
+    ],
+    "completed_review": [
+        {
+            "review_id": "r1",
+            "student_id": "u1"
+        }
+    ]
 }

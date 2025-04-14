@@ -10,3 +10,5 @@
         document.addEventListener('DOMContentLoaded', () => { //Will automatically set it to the screen showing account details.
             changeCards('cardAccount');
         });
+
+        
