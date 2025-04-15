@@ -1,4 +1,4 @@
-document.querySelector("#btnLogin").addEventListener("click",(e) => {
+document.querySelector("#btnLogin").addEventListener("click", async (e) => {
     const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 
     let strEmailLogin = document.querySelector('#txtEmailLogin').value
@@ -23,13 +23,41 @@ document.querySelector("#btnLogin").addEventListener("click",(e) => {
         html: strMessage,
         icon: "error"
         });
+        return
     }
-    else{
+    try{
+        const userData = await loadData() //We load to check if the data is valid.
+        let userFound = false
+        userData.users.forEach(user => { //Iterate and see if the login info is that of a valid user.
+            if (user.email === strEmailLogin && user.password === strPasswordLogin) { //No hashing yet, plan to add in backend.
+                userFound = true
+
+                sessionStorage.setItem('userId', user.id); //No JSON stringify, that will mess with the code later.
+                Swal.fire({
+                    title: "Successful Login",
+                    icon: "success"
+                });
+                //The below code will tell it not to save login information.
+                document.querySelector('#txtEmailLogin').value = '';
+                document.querySelector('#txtPasswordLogin').value = '';
+                loadStudentPage() //If successful login, begin the transition to studentView
+            }
+        });
+    if(!userFound){ //If not a valid username.
         Swal.fire({
-        title: "Successful Login",
-        icon: "success"
+            title: "Login Failed",
+            text: "Invalid email or password.",
+            icon: "error"
         });
     }
+} catch (err){
+    console.error('Error loading user data:', err);
+        Swal.fire({
+            title: "Error",
+            text: "There was an error loading user data. Please try again later.",
+            icon: "error"
+        });
+}
 
 })
 
@@ -132,3 +160,70 @@ $('#btnSwapLogin').on('click', function(){
         $('#frmLogin').slideDown()
     })
 })
+
+let data = [] //Defined outside of loadData, so we don't try to recreate the same variable.
+let placeholderUserID = "" //Same thing.
+
+        async function loadData() {
+            try{
+                const response = await fetch('data.json');
+                data = await response.json();
+                console.log(data)
+                return data
+            } catch (err){
+                console.log("Failed to load in data.")
+            }
+        } 
+
+function loadStudentPage() {
+    // Fetch the studentIndex.html and insert its content into the studentContainer
+    fetch('studentView/studentIndex.html')
+        .then(response => response.text()) // Convert response to text (HTML content)
+        .then(html => {
+            
+            document.getElementById('studentContainer').innerHTML = html;
+
+            //Only load all of the student.js script when a student is logged in.
+            loadStudentJS();
+        })
+        .catch(error => {
+            console.error('Error loading student page:', error);
+        });
+}
+
+
+function loadStudentJS() {
+    // Dynamically load student.js script
+    const script = document.createElement('script');
+    script.src = 'studentView/student.js';  // Path to the script
+    script.type = 'text/javascript';
+    script.id = "studentScript"
+    script.onload = () => {
+        console.log('Student JS script loaded.');
+        //Below functions will be a combination of the old on DOM functions and loadData functions.
+        loadAccountInfo()
+        loadReviews()
+        changeCards('cardAccount')
+    };
+    script.onerror = () => {
+        console.error('Error loading student JS script.');
+    };
+    document.body.appendChild(script); // Add the script tag to the body
+}
+
+function logOut() {
+    document.querySelector('#studentContainer').innerHTML = ''; // Clear the student view
+    const studentScript = document.getElementById('studentScript')
+    if (studentScript){
+        studentScript.remove() //Remove the dynamically added js code.
+        console.log("Removed student script.")
+    }
+    document.getElementById('loginContainer').style.display = 'block'; // Show the login page
+    //The below should "reset" the login page to when it is first loaded.
+    const loginForm = document.getElementById('frmLogin');
+    const registerForm = document.getElementById('frmRegister');
+    loginForm.style.display = 'block'; 
+    registerForm.style.display = 'none'; 
+
+    sessionStorage.removeItem("userId"); // Remove the userId
+}

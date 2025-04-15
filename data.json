@@ -5,6 +5,7 @@
             "first_name": "John",
             "last_name": "Doe",
             "email": "jdoe42@tntech.edu",
+            "password": "12345",
             "role": "student"
         },
         {
@@ -12,6 +13,7 @@
             "first_name": "Jane",
             "last_name": "Doe",
             "email": "jdoe40@tntech.edu",
+            "password": "67890",
             "role": "instructor"
         }
     ],

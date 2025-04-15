@@ -7,26 +7,9 @@
         document.getElementById(cardId).style.display = 'block'
     }
 
-        document.addEventListener('DOMContentLoaded', () => { //Will automatically set it to the screen showing account details.
-            loadData();
-            changeCards('cardAccount')
-        });
 
-        let data = []
-
-        async function loadData() {
-            try{
-                const response = await fetch('data.json');
-                data = await response.json();
-
-                loadAccountInfo()
-                loadReviews()
-            } catch (err){
-                console.log("Failed to load in data.")
-            }
-        } 
-
-        placeholderUserID = "u1"
+        placeholderUserID = sessionStorage.getItem("userId")
+        
 
         function loadAccountInfo(){
             const user = data.users.find(u => u.id === placeholderUserID) //Find out if the account is in the database.
@@ -120,7 +103,6 @@
             if(completed){
                 //Data validation, will need to be more complex for backend, but this is just a placeholder until backen actual checks the login system.
                 const responses = data.review_responses.filter(r => r.review_id === review.id && r.student_id === placeholderUserID)
-                const questionFeedback = data.review_feedback.filter(f => f.review_id === review.id && f.student_id === placeholderUserID)
                 const reviewGrade = data.grades.find(g => g.student_id === placeholderUserID && g.review_id === review.id)
                 gradeDisplay.textContent = `Grade: ${reviewGrade.grade}`
 
