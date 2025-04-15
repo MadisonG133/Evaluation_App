@@ -24,8 +24,10 @@
   
     <!--The below will wrap the buttons and allow them to collapse on smaller screens.-->
     <div class="collapse navbar-collapse" id="navbarButtons">
-      <div class="ms-auto"> 
-        <!--The below buttons are for now exclusive to the the student code.-->
+      <div class="ms-auto">
+        <!--The below buttons names are adjusted to fit my functions.-->
+        <!--A big note on this, if there is any button inside a form, with navbar it will completely refresh the page,
+        make sure you keep buttons inside of the div instead.-->
         <button type="button" class="btn btn-outline-light me-2 mt-2 mt-lg-0" onclick="changeCards('cardAccount')">Your Account</button>
         <button type="button" class="btn btn-outline-light me-2 mt-2 mt-lg-0" onclick="changeCards('cardPendingReviews')">Pending Reviews</button>
         <button type="button" class="btn btn-outline-light me-2 mt-2 mt-lg-0" onclick="changeCards('cardCompletedReviews')">Completed Reviews</button>
@@ -35,7 +37,7 @@
   </nav>
     
 
-    <form class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardAccount">
+    <div class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardAccount">
         <div class="card-body">
             <h1 class="text-center mb-0">Peer Assessment</h1>
             <h3 id="accountName" class="text-center mb-3"></h3>
@@ -47,26 +49,26 @@
             <input id="txtUserame" class="form-control" type="text" placeholder="Username for Contact" aria-label="Input for Username">
             <button class="btn btn-primary col-12 mt-2" type="button" id="btnSubmit">Add Contact</button>
         </div>
-    </form>
+    </div>
 
-    <form class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardPendingReviews">
+    <div class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardPendingReviews">
         <div class="card-body">
             <h1 class="text-center mb-0">Peer Assessment</h1>
             <h3 class="text-center mb-3">Pending Reviews</h3>
             <ul id="pendingReviewList" class="list-group"></ul>
             
         </div>
-    </form>
+    </div>
 
-    <form class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardCompletedReviews">
+    <div class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardCompletedReviews">
         <div class="card-body">
             <h1 class="text-center mb-0">Peer Assessment</h1>
             <h3 class="text-center mb-3">Completed Reviews</h3>
             <ul id="completedReviewList" class="list-group"></ul>
         </div>
-    </form>
+    </div>
 
-    <form class="card col-8 col-md-4 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" style="display:none" id="cardReviewDetails">
+    <div class="card col-8 col-md-4 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" style="display:none" id="cardReviewDetails">
         <div class="card-body">
             <h5 id="reviewDetailTitle" class="card-title"></h5>
             <ul id="reviewDetailsList" class="list-group list-group-flush"></ul>
@@ -74,15 +76,15 @@
                 <button type="button" class="btn btn-secondary" id="closeDetailsButton">Close</button>
             </div>
         </div>
-    </form>
+    </div>
 
-    <form class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardScoreFeedback">
+    <div class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardScoreFeedback">
         <div class="card-body">
             <h1 class="text-center mb-0">Peer Assessment</h1>
             <h3 class="text-center mb-3">Scores and Feedback</h3>
             <h5>This is the page for your scores and feedback.</h5>
         </div>
-    </form>
+    </div>
 
     
     
