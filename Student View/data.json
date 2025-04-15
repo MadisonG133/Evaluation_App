@@ -132,6 +132,24 @@
         "public": false
         }
     ],
+    "review_feedback": [
+        {
+        "review_id": "r1",
+        "instructor_id": "u2",
+        "student_id": "u1",
+        "question_id": "q1",
+        "feedback": "Glad to hear it.",
+        "public": true
+        },
+        {
+        "review_id": "r1",
+        "instructor_id": "u2",
+        "student_id": "u1",
+        "question_id": "q2",
+        "feedback": "That will happen in the near future.",
+        "public": false
+        }
+    ],
     "completed_review": [
         {
             "review_id": "r1",

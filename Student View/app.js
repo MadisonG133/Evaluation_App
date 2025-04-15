@@ -120,6 +120,7 @@
             if(completed){
                 //Data validation, will need to be more complex for backend, but this is just a placeholder until backen actual checks the login system.
                 const responses = data.review_responses.filter(r => r.review_id === review.id && r.student_id === placeholderUserID)
+                const questionFeedback = data.review_feedback.filter(f => f.review_id === review.id && f.student_id === placeholderUserID)
                 const reviewGrade = data.grades.find(g => g.student_id === placeholderUserID && g.review_id === review.id)
                 gradeDisplay.textContent = `Grade: ${reviewGrade.grade}`
 
@@ -132,10 +133,11 @@
                 responses.forEach(response => {
                     //Below will match the specific review_response to the right question.
                     const question = data.review_questions.find(q => q.id === response.question_id)
+                    const feedback = data.review_feedback.find(f => f.question_id === question.id)
                     const list = document.createElement("li")
                     list.classList.add("list-group-item")
                     //The below line of code greatly bothers me, but it is fine.
-                    list.innerHTML = `<strong>${question.question}</strong><br>${response.response}`
+                    list.innerHTML = `<strong>${question.question}</strong><br> "You answered: "${response.response}<br>"Feedback: " ${feedback.feedback}`
                     listDisplay.appendChild(list)
                     })
                 }
