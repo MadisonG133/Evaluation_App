@@ -93,10 +93,17 @@
 
             const detailCard = document.getElementById("cardReviewDetails")
             const titleDisplay = document.getElementById("reviewDetailTitle")
+            const courseDisplay = document.getElementById("reviewDetailCourse")
             const gradeDisplay = document.getElementById("reviewDetailGrade")
             const listDisplay = document.getElementById("reviewDetailsList")
 
             titleDisplay.textContent = review.title
+            const course = data.courses.find(c => c.id === review.course_id)
+            if(!course || !course.name || course.name.trim() === ""){ 
+                courseDisplay.textContent = "No Course Name Provided"
+            } else{
+                courseDisplay.textContent = course.name
+            }
             gradeDisplay.textContent = ""
             listDisplay.innerHTML = ""
 
@@ -136,6 +143,13 @@
                     const list = document.createElement("li")
                     list.classList.add("list-group-item")
                     list.innerHTML = question.question
+                    const input = document.createElement("textarea")
+                    input.classList.add("form-control", "mt-2")
+                    input.placeholder = "Your response would go here, but this is just a mockup, so no user input or submissions are allowed."
+                    input.disabled = true 
+        
+                    
+                    list.appendChild(input)
                     listDisplay.appendChild(list)
                     })
                 }
