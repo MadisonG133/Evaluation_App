@@ -10,19 +10,31 @@
     <!-- A link to styles.css -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="sidebar"> <!--This will control the sidebar.-->
-        <h2>Menu</h2>
-        <a href="#" onclick="changeCards('cardAccount')">Your Account</a>
-        <a href="#" onclick="changeCards('cardPendingReviews')">Pending Reviews</a>
-        <a href="#" onclick="changeCards('cardCompletedReviews')">Completed Reviews</a>
-        <a href="#" onclick="changeCards('cardScoreFeedback')">Scores and Feedback</a>
-         <!-- <a href="#" onclick="changeCards('card')"></a> -->
-          <!-- <a href="#" onclick="changeCards('card')"></a> -->
-           <!-- <a href="#" onclick="changeCards('card')"></a> -->
+<!--Matches the navbar in instructor.-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <span class="navbar-brand">Peer Assessment</span>
+    
+    <!--Will allow a toggle to show menu on mobile.-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtons"
+      aria-controls="navbarButtons" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!--The below will wrap the buttons and allow them to collapse on smaller screens.-->
+    <div class="collapse navbar-collapse" id="navbarButtons">
+      <div class="ms-auto">
+        <button type="button" class="btn btn-outline-light me-2 mt-2 mt-lg-0" onclick="changeCards('cardAccount')">Your Account</button>
+        <button type="button" class="btn btn-outline-light me-2 mt-2 mt-lg-0" onclick="changeCards('cardPendingReviews')">Pending Reviews</button>
+        <button type="button" class="btn btn-outline-light me-2 mt-2 mt-lg-0" onclick="changeCards('cardCompletedReviews')">Completed Reviews</button>
+        <button type="button" class="btn btn-outline-light mt-2 mt-lg-0" onclick="changeCards('cardScoreFeedback')">Scores & Feedback</button>
+      </div>
     </div>
+  </nav>
+  
+<body>
+    
 
-    <form class="card col-12 col-md-8 offset-md-4 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardAccount">
+    <form class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardAccount">
         <div class="card-body">
             <h1 class="text-center mb-0">Peer Assessment</h1>
             <h3 id="accountName" class="text-center mb-3"></h3>
@@ -36,7 +48,7 @@
         </div>
     </form>
 
-    <form class="card col-12 col-md-8 offset-md-4 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardPendingReviews">
+    <form class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardPendingReviews">
         <div class="card-body">
             <h1 class="text-center mb-0">Peer Assessment</h1>
             <h3 class="text-center mb-3">Pending Reviews</h3>
@@ -45,7 +57,7 @@
         </div>
     </form>
 
-    <form class="card col-12 col-md-8 offset-md-4 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardCompletedReviews">
+    <form class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardCompletedReviews">
         <div class="card-body">
             <h1 class="text-center mb-0">Peer Assessment</h1>
             <h3 class="text-center mb-3">Completed Reviews</h3>
@@ -53,7 +65,7 @@
         </div>
     </form>
 
-    <form class="card col-8 col-md-4 offset-md-4 col-lg-6 offset-lg-3 mt-5 mb-5" style="display:none" id="cardReviewDetails">
+    <form class="card col-8 col-md-4 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" style="display:none" id="cardReviewDetails">
         <div class="card-body">
             <h5 id="reviewDetailTitle" class="card-title"></h5>
             <ul id="reviewDetailsList" class="list-group list-group-flush"></ul>
@@ -63,7 +75,7 @@
         </div>
     </form>
 
-    <form class="card col-12 col-md-8 offset-md-4 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardScoreFeedback">
+    <form class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardScoreFeedback">
         <div class="card-body">
             <h1 class="text-center mb-0">Peer Assessment</h1>
             <h3 class="text-center mb-3">Scores and Feedback</h3>
