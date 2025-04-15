@@ -110,14 +110,18 @@
 
             const detailCard = document.getElementById("cardReviewDetails")
             const titleDisplay = document.getElementById("reviewDetailTitle")
+            const gradeDisplay = document.getElementById("reviewDetailGrade")
             const listDisplay = document.getElementById("reviewDetailsList")
 
             titleDisplay.textContent = review.title
+            gradeDisplay.textContent = ""
             listDisplay.innerHTML = ""
 
             if(completed){
                 //Data validation, will need to be more complex for backend, but this is just a placeholder until backen actual checks the login system.
                 const responses = data.review_responses.filter(r => r.review_id === review.id && r.student_id === placeholderUserID)
+                const reviewGrade = data.grades.find(g => g.student_id === placeholderUserID && g.review_id === review.id)
+                gradeDisplay.textContent = `Grade: ${reviewGrade.grade}`
 
                 if(responses.length === 0){
                     const list = document.createElement("li")

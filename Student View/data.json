@@ -137,5 +137,12 @@
             "review_id": "r1",
             "student_id": "u1"
         }
+    ],
+    "grades": [
+        {
+            "student_id": "u1",
+            "review_id": "r1",
+            "grade": "100"
+        }
     ]
 }
