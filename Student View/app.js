@@ -1,15 +1,15 @@
     function changeCards(cardId) { //Will hide all cards except the one selected.
         // Hide all cards
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => card.style.display = 'none');
+        const cards = document.querySelectorAll('.card')
+        cards.forEach(card => card.style.display = 'none')
     
         // Show the selected card
-        document.getElementById(cardId).style.display = 'block';
+        document.getElementById(cardId).style.display = 'block'
     }
 
         document.addEventListener('DOMContentLoaded', () => { //Will automatically set it to the screen showing account details.
             loadData();
-            changeCards('cardAccount');
+            changeCards('cardAccount')
         });
 
         let data = []
@@ -32,25 +32,23 @@
             const user = data.users.find(u => u.id === placeholderUserID) //Find out if the account is in the database.
             if(!user) return //Should not be triggered, but idea of not a registered account to translate to backend.
 
-            const card = document.getElementById("cardAccount")// Will add the name of the user at the top of the page.
             document.getElementById("accountName").textContent = `${user.first_name} ${user.last_name}` 
-
             const contactList = document.getElementById("contactList")
             contactList.innerHTML = '' //Clear the list in case of any uncessary data, mostly preparing for later.
 
             const contacts = data.contact_info.filter(c => c.user_id === placeholderUserID)// Will search for contacts associated with the user.
             
             if (contacts.length === 0) { //Will display a message if the user has no contacts.
-                const li = document.createElement("li");
-                li.classList.add("list-group-item");
-                li.textContent = "No contact information available.";
-                contactList.appendChild(li);
+                const list = document.createElement("li")
+                list.classList.add("list-group-item")
+                list.textContent = "No contact information available."
+                contactList.appendChild(list)
             } else {
                 contacts.forEach(contact => {
-                    const li = document.createElement("li");
-                    li.classList.add("list-group-item");
-                    li.textContent = `${contact.name}: ${contact.username}`;
-                    contactList.appendChild(li);
+                    const list = document.createElement("li")
+                    list.classList.add("list-group-item")
+                    list.textContent = `${contact.name}: ${contact.username}`
+                    contactList.appendChild(list)
                 })
         }
         }
@@ -80,8 +78,8 @@
                 }
             })
 
-            displayReviewsStatus(completedReviews, 'completedReviewList', true); 
-            displayReviewsStatus(pendingReviews, 'pendingReviewList', false);
+            displayReviewsStatus(completedReviews, 'completedReviewList', true)
+            displayReviewsStatus(pendingReviews, 'pendingReviewList', false)
         }
 
         function displayReviewsStatus(reviews, listId, completed){ //Function to load data into the correct list.
@@ -89,22 +87,73 @@
             reviewList.innerHTML = ''
 
             if (reviews.length === 0){ //Create this element if blank.
-                const list = document.createElement("li");
-                list.classList.add("list-group-item");
-                list.textContent = "No reviews available.";
-                reviewList.appendChild(list);
+                const list = document.createElement("li")
+                list.classList.add("list-group-item")
+                list.textContent = "No reviews available."
+                reviewList.appendChild(list)
             } else {
                 reviews.forEach(review =>{
-                    const list = document.createElement("li");
-                    list.classList.add("list-group-item");
-                    if(completed){ //Don't need to display due date if completed.
-                        list.textContent = `${review.title}`;
-                    } else{
-                        list.textContent = `${review.title} (Due: ${review.due_at})`;
-                    }
-                    reviewList.appendChild(list);
+                    const list = document.createElement("li")
+                    list.classList.add("list-group-item")
+                    list.innerHTML = `<button class="btn btn-link p-0" onclick="showReviewDetails('${review.id}', ${completed})"> ${review.title}${completed ? '' : ` (Due: ${review.due_at})`} </button>`
+                    //Above code will create a button that looks like a link for all of the reviews, and if they are pending, then it will have the due date, but will exclude it is already completed.
+                    reviewList.appendChild(list)
                 })
             }
         }
 
-        //Displays pending regardless of account.
+        function showReviewDetails(reviewId, completed){
+            const review = data.reviews.find(r => r.id === reviewId) //Same validation as with most of these.
+            if(!review){
+                return
+            }
+
+            const detailCard = document.getElementById("cardReviewDetails")
+            const titleDisplay = document.getElementById("reviewDetailTitle")
+            const listDisplay = document.getElementById("reviewDetailsList")
+
+            titleDisplay.textContent = review.title
+            listDisplay.innerHTML = ""
+
+            if(completed){
+                //Data validation, will need to be more complex for backend, but this is just a placeholder until backen actual checks the login system.
+                const responses = data.review_responses.filter(r => r.review_id === review.id && r.student_id === placeholderUserID)
+
+                if(responses.length === 0){
+                    const list = document.createElement("li")
+                    list.classList.add("list-group-item")
+                    list.textContent = "No responses available."
+                    listDisplay.appendChild(list)
+                } else{
+                responses.forEach(response => {
+                    //Below will match the specific review_response to the right question.
+                    const question = data.review_questions.find(q => q.id === response.question_id)
+                    const list = document.createElement("li")
+                    list.classList.add("list-group-item")
+                    //The below line of code greatly bothers me, but it is fine.
+                    list.innerHTML = `<strong>${question.question}</strong><br>${response.response}`
+                    listDisplay.appendChild(list)
+                    })
+                }
+            } else { //If review is pending.
+                const questions = data.review_questions.filter(q => q.review_id === reviewId)
+                if(questions.length === 0){
+                    const list = document.createElement("li")
+                    list.classList.add("list-group-item")
+                    list.textContent = "No questions available."
+                    listDisplay.appendChild(list)
+                } else{
+                    questions.forEach(question => {
+                    //Below will match the specific review_response to the right question.
+                    const list = document.createElement("li")
+                    list.classList.add("list-group-item")
+                    list.innerHTML = question.question
+                    listDisplay.appendChild(list)
+                    })
+                }
+            }
+            detailCard.style.display = 'block'
+        }
+        closeDetailsButton.addEventListener('click', () => {
+            document.getElementById('cardReviewDetails').style.display = 'none';
+        })

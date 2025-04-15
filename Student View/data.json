@@ -100,21 +100,33 @@
           "review_id": "r1",
           "question": "What can be improved.",
           "type": "short"
+        },
+        {
+        "id": "q3",
+        "review_id": "r2",
+        "question": "What group do you think you want to join for the backend?",
+        "type": "short"
+        },
+        {
+        "id": "q4",
+        "review_id": "r2",
+        "question": "Why did you choose this group?",
+        "type": "short"
         }
     ],
     "review_responses": [
         {
         "review_id": "r1",
-        "reviewer_id": "u2",
-        "reviewee_id": "u1",
+        "instructor_id": "u2",
+        "student_id": "u1",
         "question_id": "q1",
         "response": "It looks decent considering everything is a placeholder.",
         "public": true
         },
         {
         "review_id": "r1",
-        "reviewer_id": "u2",
-        "reviewee_id": "u1",
+        "instructor_id": "u2",
+        "student_id": "u1",
         "question_id": "q2",
         "response": "Could use more backend stuff.",
         "public": false
