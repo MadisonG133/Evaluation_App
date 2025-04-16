@@ -1,0 +1,168 @@
+{
+    "users": [
+        {
+            "id": "u1", 
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "jdoe42@tntech.edu",
+            "password": "12345",
+            "role": "student"
+        },
+        {
+            "id": "u2", 
+            "first_name": "Jane",
+            "last_name": "Doe",
+            "email": "jdoe40@tntech.edu",
+            "password": "67890",
+            "role": "instructor"
+        }
+    ],
+    "contact_info": [
+        {
+            "name": "Discord",
+            "user_id": "u1",
+            "username": "jdoe1234"
+        },
+        {
+            "name": "Teams",
+            "user_id": "u1",
+            "username": "jdoe42@tntech.edu"
+        }
+    ],
+    "courses": [
+        {
+            "id": "c1",
+            "name": "CSC3100",
+            "instructor_id": "u2",
+            "join_code": "CSC3100-0001"
+        }
+    ],
+    "enrolled": [
+        {
+            "course_id": "c1",
+            "student_id": "u1"
+        }
+    ],
+    "teams": [
+        {
+            "id": "t1",
+            "course_id": "c1",
+            "name": "Testers"
+        }
+    ],
+    "team_members": [
+        {
+            "team_id": "t1",
+            "student_id": "u1"
+        }
+    ],
+    "reviews": [
+        {
+        "id": "r1",
+        "course_id": "c1",
+        "title": "Placeholder Test Review",
+        "is_public": true,
+        "scheduled_at": "2025-04-15T08:00:00Z",
+        "due_at": "2025-04-20T23:59:59Z"
+        },
+        {
+        "id": "r2",
+        "course_id": "c1",
+        "title": "Test Review 1",
+        "is_public": true,
+        "scheduled_at": "2025-04-15T08:00:00Z",
+        "due_at": "2025-04-20T23:59:59Z"
+        },
+        {
+        "id": "r3",
+        "course_id": "c1",
+        "title": "Test Review 2",
+        "is_public": false,
+        "scheduled_at": "2025-04-15T08:00:00Z",
+        "due_at": "2025-04-20T23:59:59Z"
+        },
+        {
+        "id": "r4",
+        "course_id": "c2",
+        "title": "Introduction to this second course.",
+        "is_public": true,
+        "scheduled_at": "2025-04-15T08:00:00Z",
+        "due_at": "2025-04-20T23:59:59Z"
+        }
+    ],
+    "review_questions": [
+        {
+        "id": "q1",
+        "review_id": "r1",
+        "question": "How does the program look so far?",
+        "type": "short"
+        },
+        {
+          "id": "q2",
+          "review_id": "r1",
+          "question": "What can be improved.",
+          "type": "short"
+        },
+        {
+        "id": "q3",
+        "review_id": "r2",
+        "question": "What group do you think you want to join for the backend?",
+        "type": "short"
+        },
+        {
+        "id": "q4",
+        "review_id": "r2",
+        "question": "Why did you choose this group?",
+        "type": "short"
+        }
+    ],
+    "review_responses": [
+        {
+        "review_id": "r1",
+        "instructor_id": "u2",
+        "student_id": "u1",
+        "question_id": "q1",
+        "response": "It looks decent considering everything is a placeholder.",
+        "public": true
+        },
+        {
+        "review_id": "r1",
+        "instructor_id": "u2",
+        "student_id": "u1",
+        "question_id": "q2",
+        "response": "Could use more backend stuff.",
+        "public": false
+        }
+    ],
+    "review_feedback": [
+        {
+        "review_id": "r1",
+        "instructor_id": "u2",
+        "student_id": "u1",
+        "question_id": "q1",
+        "feedback": "Glad to hear it.",
+        "public": true
+        },
+        {
+        "review_id": "r1",
+        "instructor_id": "u2",
+        "student_id": "u1",
+        "question_id": "q2",
+        "feedback": "That will happen in the near future.",
+        "public": false
+        }
+    ],
+    "completed_review": [
+        {
+            "review_id": "r1",
+            "student_id": "u1"
+        }
+    ],
+    "grades": [
+        {
+            "student_id": "u1",
+            "review_id": "r1",
+            "grade": "100"
+        }
+    ]
+}

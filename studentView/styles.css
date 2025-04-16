@@ -1,0 +1,64 @@
+body {
+    background-color: #23486A;
+}
+
+h1 {
+    color: #EFB036;
+}
+
+h3 {
+    color: #3B6790;
+}
+
+#btnLogin {
+   background-color: #3B6790 ; 
+}
+
+/* Made it to when you hover over the login in button it gives a shadow effect */
+#btnLogin:hover {
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+    transition: box-shadow 0.2s ease; 
+ }
+
+#btnRegistration {
+    background-color: #3B6790 ; 
+}
+
+/* Same thing here, made it to when you hover over the register button it gives a shadow effect */
+ #btnRegistration:hover {
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+    transition: box-shadow 0.2s ease; 
+}
+
+
+#frmLogin {
+    background-color: #F5F5F7;
+}
+
+#frmRegister {
+    background-color: #F5F5F7;
+}
+
+/* .sidebar {
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #EFB036;
+    color: white;
+    padding-top: 20px;
+    padding-left: 10px;
+    }
+    
+    .sidebar a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+    }
+    
+    .sidebar a:hover {
+    background-color: #3B6790;
+    } 
+    Kept the sidebar commented out just in case.*/
