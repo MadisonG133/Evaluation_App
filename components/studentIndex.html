@@ -1,1 +1,67 @@
+    <!--Matches the navbar in instructor.-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <span class="navbar-brand">Peer Assessment</span>
+    
+    <!--Will allow a toggle to show menu on mobile.-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtons"
+      aria-controls="navbarButtons" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!--The below will wrap the buttons and allow them to collapse on smaller screens.-->
+    <div class="collapse navbar-collapse" id="navbarButtons">
+      <div class="ms-auto">
+        <!--The below buttons names are adjusted to fit my functions.-->
+        <!--A big note on this, if there is any button inside a form, with navbar it will completely refresh the page,
+        make sure you keep buttons inside of the div instead.-->
+        <button type="button" class="btn btn-outline-light me-2 mt-2 mt-lg-0" onclick="changeCards('cardAccount')">Your Account</button>
+        <button type="button" class="btn btn-outline-light me-2 mt-2 mt-lg-0" onclick="changeCards('cardPendingReviews')">Pending Reviews</button>
+        <button type="button" class="btn btn-outline-light me-2 mt-2 mt-lg-0" onclick="changeCards('cardCompletedReviews')">Review Scores</button>
+        <button type="button" class="btn btn-outline-light me-2 mt-2 mt-lg-0" onclick="logOut()">Log Out</button>
+      </div>
+    </div>
+  </nav>
+    
 
+    <div class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardAccount">
+        <div class="card-body">
+            <h1 class="text-center mb-0">Peer Assessment</h1>
+            <h3 id="accountName" class="text-center mb-3"></h3>
+            <h3>Contacts</h3>
+            <ul id="contactList" class="list-group"></ul>
+            <h5 class="mt-5">Below is a mockup to show future features and does nothing right now.</h5>
+            <h3 class="mt-2">Enter New Contact Information Below.</h3>
+            <input id="txtcontactName" class="form-control" type="text" placeholder="Name of Contact" aria-label="Input for Name of Contact">
+            <input id="txtUserame" class="form-control" type="text" placeholder="Username for Contact" aria-label="Input for Username">
+            <button class="btn btn-primary col-12 mt-2" type="button" id="btnSubmit">Add Contact</button>
+        </div>
+    </div>
+
+    <div class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardPendingReviews">
+        <div class="card-body">
+            <h1 class="text-center mb-0">Peer Assessment</h1>
+            <h3 class="text-center mb-3">Pending Reviews</h3>
+            <ul id="pendingReviewList" class="list-group"></ul>
+            
+        </div>
+    </div>
+
+    <div class="card col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" id="cardCompletedReviews">
+        <div class="card-body">
+            <h1 class="text-center mb-0">Peer Assessment</h1>
+            <h3 class="text-center mb-3">Completed Reviews</h3>
+            <ul id="completedReviewList" class="list-group"></ul>
+        </div>
+    </div>
+
+    <div class="card col-8 col-md-4 offset-md-2 col-lg-6 offset-lg-3 mt-5 mb-5" style="display:none" id="cardReviewDetails">
+        <div class="card-body">
+            <h5 id="reviewDetailTitle" class="card-title"></h5>
+            <h5 id="reviewDetailCourse" class="card-title"></h5>
+            <h5 id="reviewDetailGrade" class="card-title"></h5>
+            <ul id="reviewDetailsList" class="list-group list-group-flush"></ul>
+            <div class="card-footer">
+                <button type="button" class="btn btn-secondary" id="closeDetailsButton">Close</button>
+            </div>
+        </div>
+    </div>
