@@ -119,7 +119,7 @@ document.querySelector("#btnRegistration").addEventListener("click",(e) => {
                 // Wait for the script to finish loading
                 objScript.onload = () => {
                     console.log(`${roleFile}.js loaded.`);
-                    // You can trigger init logic here if needed
+                    
                 };
 
                 // Inject HTML content into a container
@@ -138,12 +138,6 @@ document.querySelector("#btnRegistration").addEventListener("click",(e) => {
         });
     }
 
-    // if(strRole == "Student"){
-    //     window.location.href = "student.html"
-    // }
-    // else{
-    //     window.location.href = "instructor.html"
-    // }
     
 })
 
@@ -208,7 +202,7 @@ let placeholderUserID = "" //Same thing.
 
 function loadStudentPage() {
     // Fetch the studentIndex.html and insert its content into the studentContainer
-    fetch('studentView/studentIndex.html')
+    fetch('components/studentIndex.html')
         .then(response => response.text()) // Convert response to text (HTML content)
         .then(html => {
             
@@ -226,7 +220,7 @@ function loadStudentPage() {
 function loadStudentJS() {
     // Dynamically load student.js script
     const script = document.createElement('script');
-    script.src = 'studentView/student.js';  // Path to the script
+    script.src = 'js/student.js';  // Path to the script
     script.type = 'text/javascript';
     script.id = "studentScript"
     script.onload = () => {
@@ -257,4 +251,3 @@ function logOut() {
     registerForm.style.display = 'none'; 
 
     sessionStorage.removeItem("userId"); // Remove the userId
-}
