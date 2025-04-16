@@ -291,7 +291,7 @@ function selectReportStudent(student) {
 
 
 
- //Logs out the user and returns to the login page.
+ //Logs out the user and returns to the Login page.
  
 function logOut() {
     // Hides the instructor dashboard
