@@ -159,3 +159,23 @@
         closeDetailsButton.addEventListener('click', () => {
             document.getElementById('cardReviewDetails').style.display = 'none';
         })
+
+function logOut() {
+    // Hides the instructor dashboard
+    document.getElementById('instructorDash').style.display = 'none';
+
+    // Shows the login form
+    const loginForm = document.getElementById('frmLogin');
+    const registerForm = document.getElementById('frmRegister');
+    loginForm.style.display = 'block'; 
+    registerForm.style.display = 'none'; 
+
+    // Clears session data
+    sessionStorage.removeItem('userId'); // Remove the userId from sessionStorage
+
+    // Resets the login form
+    document.getElementById('txtEmailLogin').value = '';
+    document.getElementById('txtPasswordLogin').value = '';
+
+    console.log('User logged out successfully.');
+}
