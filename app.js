@@ -58,6 +58,7 @@ document.querySelector("#btnLogin").addEventListener("click", async (e) => {
             icon: "error"
         });
 }
+
 })
 
 
@@ -66,7 +67,6 @@ document.querySelector("#btnRegistration").addEventListener("click",(e) => {
     //Validation for Personal Information
     let strFirstName = document.querySelector("#txtFirstName").value
     let strLastName = document.querySelector("#txtLastName").value
-    let strRole = document.querySelector("#txtRole").value
     //Validation for Account Information
     const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
     let strEmail = document.querySelector("#txtEmail").value
@@ -76,11 +76,6 @@ document.querySelector("#btnRegistration").addEventListener("click",(e) => {
     strEmail = strEmail.toLowerCase()
     let blnError = false
     let strMessage = ""
-
-    if(strRole == "Select Role"){
-        blnError = true
-        strMessage += '<p class="mb-0 mt-0">Please Select a Role</p>'
-    }
 
     if(strFirstName.length < 1){
         blnError = true
@@ -105,45 +100,19 @@ document.querySelector("#btnRegistration").addEventListener("click",(e) => {
         blnError = true
         strMessage += '<p class="mb-0 mt-0">Passwords Must be the Same</p>'
     }
-    if (!blnError) {
-        const roleFile = strRole.toLowerCase(); // "student" or "instructor"
-        fetch(`components/${roleFile}Index.html`)
-            .then(response => response.text())
-            .then(html => {
-                // Load and inject the appropriate JS
-                const objScript = document.createElement('script');
-                objScript.src = `js/${roleFile}.js`; // e.g., js/student.js
-                objScript.type = 'text/javascript';
-                document.head.appendChild(objScript);
-
-                // Wait for the script to finish loading
-                objScript.onload = () => {
-                    console.log(`${roleFile}.js loaded.`);
-                    // You can trigger init logic here if needed
-                };
-
-                // Inject HTML content into a container
-                document.querySelector('#frmRegister').innerHTML = html;
-                document.querySelector('#frmRegister').style.display = 'block';
-            })
-            .catch(error => {
-                console.error(`Error loading ${roleFile} view:`, error);
-                Swal.fire("Error", `Could not load ${roleFile} view.`, "error");
-            });
-    } else {
+    if(blnError){
         Swal.fire({
-            title: "Oh no, you have an error!",
-            html: strMessage,
-            icon: "error"
+        title: "Oh no, you have an error!",
+        html: strMessage,
+        icon: "error"
         });
     }
-
-    // if(strRole == "Student"){
-    //     window.location.href = "student.html"
-    // }
-    // else{
-    //     window.location.href = "instructor.html"
-    // }
+    else{
+        Swal.fire({
+        title: "Successful Registration",
+        icon: "success"
+        });
+    }
     
 })
 
