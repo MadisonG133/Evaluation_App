@@ -251,3 +251,4 @@ function logOut() {
     registerForm.style.display = 'none'; 
 
     sessionStorage.removeItem("userId"); // Remove the userId
+}
