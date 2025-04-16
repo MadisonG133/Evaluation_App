@@ -1,3 +1,4 @@
+<!-- Our Nav Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <span class="navbar-brand">Instructor Dashboard</span>
 
@@ -19,11 +20,15 @@
     </div>
 </nav>
 
-<!-- Course Section -->
+
+
+
+
+<!-- Create Course Section -->
 <div id="instructorDash" class="container my-5">
   <div id="section-courses" class="dashboard-section">
     <!-- Create Courses Here -->
-    <h2>Create Courses</h2>
+    <h2 style="color: #EFB036;">Create Courses</h2>
         <form id="createCourseForm" class="mb-3">
             <div class="mb-3">
                 <label for="courseName" class="form-label">Course Name</label>
@@ -34,45 +39,54 @@
         <ul id="courseList" class="list-group"></ul>
 
         <!-- List of Created Courses -->
-    <h2 class="mt-5">Current Courses</h2>
+    <h2 class="mt-5" style="color: #EFB036;">Current Courses</h2>
         <ul id="courseList" class="list-group">
             <li class="list-group-item">CSC3100</li>
             <li class="list-group-item">CSC4320</li>
         </ul>
   </div>
 
-  <!-- Teams Section -->
+
+
+
+
+
+  <!-- Create Teams Section -->
   <div id="section-teams" class="dashboard-section" style="display:none;">
-    <h2>Manage Teams</h2>
+    <h2 style="color: #EFB036;">Manage Teams</h2>
         <form id="createTeamForm" class="mb-3">
           <h2 class="mt-5">Select a Course</h2>
           <ul id="courseList" class="list-group">
               <li class="list-group-item">CSC3100</li>
               <li class="list-group-item">CSC4320</li>
           </ul>
-          <h2 class="mt-5">Current Teams in CSC3100</h2>
+          <h2 class="mt-5" style="color: #EFB036;">Current Teams in CSC3100</h2>
           <ul id="courseList" class="list-group">
               <li class="list-group-item">The Best Team</li>
               <li class="list-group-item">The Better Team</li>
           </ul>
-          <h2 class="mt-5">Create a Team</h2>
+          <h2 class="mt-5" style="color: #EFB036;">Create a Team</h2>
 
           <div class="mb-3">
               <label for="teamName" class="form-label">Team Name</label>
               <input type="text" class="form-control" id="teamName" placeholder="Enter team name">
           </div>
-          <button type="button" class="btn btn-primary">Create Team</button>
+          <button type="button" id="btnCreateTeam" class="btn btn-primary" aria-label="Create Your Team">Create Team</button>
         </form>
         <ul id="teamList" class="list-group"></ul>
   </div>
 
+
+
+
+
   <!-- View Reviews Section -->
   <div id="section-view" class="dashboard-section" style="display:none;">
     <!-- Reviews list here -->
-    <h2>View Reviews</h2>
+    <h2 style="color: #EFB036;">View Reviews</h2>
     <div class="mb-4">
 
-      <!-- Private Reviews list here -->
+      <!-- Private Reviews list here; Put placeholders in them to give the idea -->
       <h5>Private Reviews</h5>
         <div class="scroll-container border rounded p-3">
             <ul id="privateReviewList" class="list-group">
@@ -83,7 +97,7 @@
         </div>
     </div>
 
-    <!-- Public Reviews list here -->
+    <!-- Public Reviews list here; Put placeholders in them to give the idea-->
     <div>
         <h5>Public Reviews</h5>
         <div class="scroll-container border rounded p-3" >
@@ -98,10 +112,14 @@
 
 
 
-  <div id="section-create" class="dashboard-section" style="display:none;">
-    <h2>Create Review</h2>
 
-    <!-- Current Courses Scrollable List -->
+
+  <!-- Create Reviews Section -->
+
+  <div id="section-create" class="dashboard-section" style="display:none;">
+    <h2 style="color: #EFB036;">Create Review</h2>
+
+    <!-- Current Courses List; Put placeholders in them to give the idea -->
     <div class="mb-3">
         <h5>Current Courses</h5>
         <div class="scroll-container border rounded p-3" style="max-height: 150px; overflow-y: auto;">
@@ -118,7 +136,7 @@
         <input type="text" class="form-control" id="selectedCourseCreate" placeholder="Select a course from the list above" readonly>
     </div>
 
-    <!-- Teams Scrollable List -->
+    <!-- Teams List; Put placeholders In them to give the idea -->
     <div class="mb-3">
         <h5>Teams</h5>
         <div class="scroll-container border rounded p-3" style="max-height: 150px; overflow-y: auto;">
@@ -134,20 +152,20 @@
         <input type="text" class="form-control" id="selectedTeamCreate" placeholder="Select a team from the list above" readonly>
     </div>
 
-    <!-- Review Title -->
+    <!-- Create Review Title -->
     <div class="mb-3">
         <label for="reviewTitle" class="form-label">Review Title</label>
         <input type="text" class="form-control" id="reviewTitle" placeholder="Enter review title">
     </div>
 
-    <!-- Question Section -->
+    <!-- Question Section; Where you create your questions -->
     <div id="questionContainer" class="mb-3 scroll-container border rounded p-3">
         <!-- Created questions will be added here using addQuestion() -->
     </div>
-    <button type="button" class="btn btn-outline-primary" onclick="addQuestion()">+ Add Question</button>
-    <button type="button" class="btn btn-primary" id="btnCreateReview">Create Review</button>
+    <button type="button" id="btnAddQuestion" class="btn btn-primary" aria-label="Add another Question" onclick="addQuestion()">+ Add Question</button>
+    <button type="button"  id="btnCreateReview" class="btn btn-primary" aria-label="Create your Review">Create Review</button>
 
-    <!-- Current Reviews -->
+    <!-- Current Reviews; Where you can view your created reviews -->
     <div class="mb-3 scroll-container border rounded p-3">
         <h5>Current Reviews</h5>
         <ul id="currentReviews" class="list-group list-group-flush mb-0">
@@ -156,10 +174,15 @@
     </div>
 </div>
 
-  <div id="section-schedule" class="dashboard-section" style="display:none;">
-    <h2>Schedule Reviews</h2>
 
-    <!-- Current Courses Scrollable List -->
+
+
+
+  <!-- Schedule Reviews Section -->
+  <div id="section-schedule" class="dashboard-section" style="display:none;">
+    <h2 style="color: #EFB036;">Schedule Reviews</h2>
+
+    <!-- Current Courses List; Put placeholders In them to give the idea -->
     <div class="mb-3">
         <h5>Current Courses</h5>
         <div class="scroll-container border rounded p-3" style="max-height: 150px; overflow-y: auto;">
@@ -169,6 +192,7 @@
             </ul>
         </div>
     </div>
+
 
     <!-- Schedule Review Form -->
     <form id="scheduleReviewForm" class="mb-3">
@@ -184,10 +208,10 @@
           <label for="reviewTime" class="form-label">Review Time</label>
           <input type="time" class="form-control" id="reviewTime">
       </div>
-        <button type="button" class="btn btn-primary" onclick="addScheduledReview()">Add to Schedule</button>
+        <button type="button" id="btnCreateSchedule" class="btn btn-primary" aria-label="Add to Schedule" onclick="addScheduledReview()">Add to Schedule</button>
     </form>
 
-    <!-- Scheduled Reviews Scrollable List -->
+    <!-- Scheduled Reviews List; Will have you created schedule reviews list -->
     <h5>Scheduled Reviews</h5>
     <div class="scroll-container border rounded p-3" style="max-height: 200px; overflow-y: auto;">
         <ul id="scheduledReviewList" class="list-group">
@@ -199,9 +223,9 @@
 
 
   <div id="section-reports" class="dashboard-section" style="display:none;">
-    <h2>Reports</h2>
+    <h2 style="color: #EFB036;">Reports</h2>
 
-    <!-- Scrollable Course List -->
+    <!-- Course List; Put placeholders In them to give the idea -->
     <div class="mb-3">
       <h5>Select a Course</h5>
       <div class="scroll-container border rounded p-3" style="max-height: 150px; overflow-y: auto;">
@@ -212,7 +236,7 @@
       </div>
     </div>
 
-    <!-- Course Average -->
+    <!-- Selected Course Average; Show the average of your selected course -->
     <div class="mb-4" id="courseAverageSection" style="display: none;">
       <h5>Course Average</h5>
       <ul class="list-group">
@@ -220,17 +244,17 @@
       </ul>
     </div>
 
-    <!-- Scrollable Team List -->
+    <!-- Team List; Where you can select your teams from -->
     <div class="mb-3" id="teamListSection" style="display: none;">
       <h5>Select a Team</h5>
       <div class="scroll-container border rounded p-3" style="max-height: 150px; overflow-y: auto;">
         <ul id="reportTeamsList" class="list-group">
-          <!-- Filled dynamically -->
+          <!-- This is where the teams will be outputted -->
         </ul>
       </div>
     </div>
 
-    <!-- Team Average -->
+    <!-- Selected Team Average; Where you can see the selected team's average -->
     <div class="mb-4" id="teamAverageSection" style="display: none;">
       <h5>Team Average</h5>
       <ul class="list-group">
@@ -238,17 +262,17 @@
       </ul>
     </div>
 
-    <!-- Scrollable Student List -->
+    <!-- Student List; Where you can click on students to view their Individual Averages -->
     <div class="mb-3" id="studentListSection" style="display: none;">
       <h5>Select a Student</h5>
       <div class="scroll-container border rounded p-3" style="max-height: 150px; overflow-y: auto;">
         <ul id="reportStudentsList" class="list-group">
-          <!-- Filled dynamically -->
+          <!-- This is where the students will be listed at-->
         </ul>
       </div>
     </div>
 
-    <!-- Individual Average -->
+    <!-- Selected Individual Average; Shows the average of the selected individual -->
     <div class="mb-4" id="individualAverageSection" style="display: none;">
       <h5>Individual Average</h5>
       <ul class="list-group">
