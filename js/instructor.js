@@ -1,20 +1,4 @@
-// document.querySelector("btnCreateCourse").addEventListener("click",(e) => { 
-//     e.preventDefault();
-//     let objCourse = {
-//         "courseName": document.querySelector("#txtCourseName").value,
-//         "courseCode": document.querySelector("#txtCourseCode").value,
-//         "courseDescription": document.querySelector("#txtCourseDescription").value,
-//         "courseStartDate": document.querySelector("#txtCourseStartDate").value,
-//         "courseEndDate": document.querySelector("#txtCourseEndDate").value,
-//         "courseInstructor": document.querySelector("#txtCourseInstructor").value
-//     }
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(error => console.error('Error:', error));
-
-// });
-
-
+//This is what makes the Nav Bar Dynamic/Work
 document.querySelectorAll('button[data-target]').forEach(btn => {
     btn.addEventListener('click', () => {
       const targetId = btn.getAttribute('data-target');
@@ -29,6 +13,12 @@ document.querySelectorAll('button[data-target]').forEach(btn => {
       if (target) target.style.display = 'block';
     });
   });
+
+
+
+
+
+  //Create Review Section
 
   let questionCount = 0; //Want to make a counter for the number of questions created 
     
@@ -65,7 +55,7 @@ document.querySelectorAll('button[data-target]').forEach(btn => {
     }
     
 
-
+    //This gives you the option to go from a multiple choice question to a likert scale/short answer question.
     function toggleOptions(select, id) {
       const optionsArea = document.querySelector(`#${id} .options-area`);
       const type = select.value;
@@ -84,20 +74,20 @@ document.querySelectorAll('button[data-target]').forEach(btn => {
   
 
 
-// Ensure the Create Review button is explicitly bound to the createReview function
+
 document.getElementById('btnCreateReview').addEventListener('click', createReview);
 
-/**
- * Creates a review and adds it to the Current Reviews list.
- */
+
+//Creates a review and adds it to the Current Reviews list.
+ 
 function createReview() {
     const selectedCourse = document.getElementById('selectedCourseCreate').value.trim();
     const selectedTeam = document.getElementById('selectedTeamCreate').value.trim();
     const reviewTitle = document.getElementById('reviewTitle').value.trim();
 
-    // Ensure all fields are filled
+    // Ensures all fields are filled
     if (selectedCourse && selectedTeam && reviewTitle) {
-        // Create the list item
+        // Create the review if they are 
         const li = document.createElement('li');
         li.className = 'list-group-item';
         li.innerHTML = `
@@ -124,12 +114,13 @@ function createReview() {
     }
 }
 
+// Selects a course from the Current Courses list.
 function selectCourseForReview(courseItem) {
   const selectedCourseInput = document.getElementById('selectedCourseCreate');
   selectedCourseInput.value = courseItem.textContent.trim();
 }
 
-// For Create Review section (selecting team)
+// Selects a team from the Current Teams list.
 function selectTeamForReview(teamItem) {
   const selectedTeamInput = document.getElementById('selectedTeamCreate');
   selectedTeamInput.value = teamItem.textContent.trim();
@@ -151,7 +142,7 @@ function deleteCurrentReview(button) {
 
 
 
-
+//Create Schedule Section
 
 /**
  * Selects a course from the Current Courses list.
@@ -173,7 +164,7 @@ function addScheduledReview() {
 
   //We have to have all three of these to create a review
   if (selectedCourse && reviewDate && reviewTime) {
-      // Creates the list item
+      // Creates the scheduled review
       const li = document.createElement('li');
       li.className = 'list-group-item d-flex justify-content-between align-items-center';
       li.innerHTML = `
@@ -205,22 +196,22 @@ function deleteScheduledReview(button) {
 
 
 
-// Dummy structured data for courses, teams, and students
+
+
+//Create Report Section
+
+// Made up data for courses, teams, and students to test average calculations
 const reportData = {
   "CSC3100": {
     "TheBestTeam": [
       { name: "Alice", score: 92 },
-      { name: "Charlie", score: 85 }
-    ],
-    "TeamBravo": [
-      { name: "Eli", score: 88 },
-      { name: "Frank", score: 91 }
+      { name: "Bob", score: 85 }
     ]
   },
   "CSC4320": {
     "TheBetterTeam": [
-      { name: "Bob", score: 79 },
-      { name: "Diana", score: 83 }
+      { name: "Madison", score: 100 },
+      { name: "Diana", score: 91 }
     ]
   }
 };
@@ -228,12 +219,12 @@ const reportData = {
 let selectedCourse = "";
 let selectedTeam = "";
 
-// On click of a course
+// When you click on a course, this function will display the course average and the list of teams.
 function selectReportCourse(courseItem) {
   selectedCourse = courseItem.textContent.trim();
   document.getElementById("courseAverageSection").style.display = "block";
 
-  // Calculate and display course average
+  // This is what calculates and displays the course average
   const allScores = [];
   const teams = reportData[selectedCourse];
   for (const team in teams) {
@@ -243,7 +234,7 @@ function selectReportCourse(courseItem) {
   const courseAvg = (allScores.reduce((a, b) => a + b, 0) / allScores.length).toFixed(1);
   document.getElementById("courseAvgScore").textContent = courseAvg;
 
-  // Populate teams
+  //This is what populates the team list
   const teamList = document.getElementById("reportTeamsList");
   teamList.innerHTML = "";
   for (const team in teams) {
@@ -254,25 +245,25 @@ function selectReportCourse(courseItem) {
     teamList.appendChild(li);
   }
 
-  // Show team section
+  //This shows the team list and hides the student list and individual average
   document.getElementById("teamListSection").style.display = "block";
   document.getElementById("teamAverageSection").style.display = "none";
   document.getElementById("studentListSection").style.display = "none";
   document.getElementById("individualAverageSection").style.display = "none";
 }
 
-// On click of a team
+// When you click on a team, this function will display the team average and the list of students.
 function selectReportTeam(teamItem) {
   selectedTeam = teamItem.textContent.trim();
   const students = reportData[selectedCourse][selectedTeam];
 
-  // Team average
+  //This calculates and displays the team average
   const scores = students.map(s => s.score);
   const teamAvg = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
   document.getElementById("teamAvgScore").textContent = teamAvg;
   document.getElementById("teamAverageSection").style.display = "block";
 
-  // Populate student list
+  //This is what populates the student list
   const studentList = document.getElementById("reportStudentsList");
   studentList.innerHTML = "";
   students.forEach(student => {
@@ -287,32 +278,37 @@ function selectReportTeam(teamItem) {
   document.getElementById("individualAverageSection").style.display = "none";
 }
 
-// On click of a student
+//When you click on a student, this function will display their score.
 function selectReportStudent(student) {
   document.getElementById("individualAvgScore").textContent = student.score;
   document.getElementById("individualAverageSection").style.display = "block";
 }
 
-/**
- * Logs out the user and returns to the login page.
- */
+
+
+
+
+
+
+
+ //Logs out the user and returns to the login page.
+ 
 function logOut() {
-    // Hide the instructor dashboard
+    // Hides the instructor dashboard
     document.getElementById('instructorDash').style.display = 'none';
 
-    // Show the login form
+    // Shows the login form
     const loginForm = document.getElementById('frmLogin');
     const registerForm = document.getElementById('frmRegister');
     loginForm.style.display = 'block'; 
     registerForm.style.display = 'none'; 
 
-    // Clear session data
+    // Clears session data
     sessionStorage.removeItem('userId'); // Remove the userId from sessionStorage
 
-    // Reset the login form
+    // Resets the login form
     document.getElementById('txtEmailLogin').value = '';
     document.getElementById('txtPasswordLogin').value = '';
 
     console.log('User logged out successfully.');
 }
-
